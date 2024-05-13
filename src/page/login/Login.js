@@ -1,5 +1,7 @@
 import React from "react";
-import "./Login.css";
+import "../../assets/css/Form.css";
+import { FcGoogle } from "react-icons/fc";
+import { FaFacebookF } from "react-icons/fa";
 import {
     ACCESS_TOKEN,
     FACEBOOK_AUTH_URL,
@@ -57,29 +59,29 @@ function Login(props) {
                         <div className="col-md-6 contents">
                             <div className="row justify-content-center">
                                 <div className="col-md-8">
-                                    <div className="mb-4">
-                                        <h3>
+                                    <div className="mb-4 ">
+                                        <h1>
                                             Đăng nhập{" "}
                                             <a
                                                 href="/"
-                                                class="text-decoration-none"
+                                                className="text-decoration-none"
                                             >
                                                 Estate
                                                 <span className="color-b">
                                                     Agency
                                                 </span>
                                             </a>
-                                        </h3>
-                                        <p className="mb-4">
+                                        </h1>
+                                        <p className="mb-4 fs-5 ">
                                             Nếu bạn chưa có tài khoản.{" "}
                                             <a href="/signup">
-                                                Đăng ký tài khoản mới
+                                                Đăng ký tại đây
                                             </a>
                                         </p>
                                     </div>
                                     <LoginForm />
 
-                                    <span className="d-block text-left my-4 text-muted">
+                                    <span className="d-block text-center my-4 text-muted fs-5">
                                         {" "}
                                         hoặc đăng nhập với
                                     </span>
@@ -100,25 +102,29 @@ function SocialLogin() {
         <div className="social-login">
             <a href={FACEBOOK_AUTH_URL} className="facebook">
                 <span className="icon-facebook mr-3">
-                    <svg
+                    {/* <svg
                         xmlns="http://www.w3.org/2000/svg"
                         height="1.5em"
                         viewBox="0 0 512 512"
                     >
                         <path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z" />
-                    </svg>{" "}
+                    </svg>{" "} */}
+
+                    <FaFacebookF size={28} />
                 </span>
             </a>
             &nbsp;&nbsp;
             <a href={GOOGLE_AUTH_URL} className="google">
                 <span className="icon-google mr-3">
-                    <svg
+                    {/* <svg
                         xmlns="http://www.w3.org/2000/svg"
                         height="1.5em"
                         viewBox="0 0 512 512"
                     >
                         <path d="M256,8C119.1,8,8,119.1,8,256S119.1,504,256,504,504,392.9,504,256,392.9,8,256,8ZM185.3,380a124,124,0,0,1,0-248c31.3,0,60.1,11,83,32.3l-33.6,32.6c-13.2-12.9-31.3-19.1-49.4-19.1-42.9,0-77.2,35.5-77.2,78.1S142.3,334,185.3,334c32.6,0,64.9-19.1,70.1-53.3H185.3V238.1H302.2a109.2,109.2,0,0,1,1.9,20.7c0,70.8-47.5,121.2-118.8,121.2ZM415.5,273.8v35.5H380V273.8H344.5V238.3H380V202.8h35.5v35.5h35.2v35.5Z" />
-                    </svg>
+                    </svg> */}
+
+                    <FcGoogle size={28} />
                 </span>
             </a>
         </div>
@@ -168,7 +174,7 @@ function LoginForm() {
     return (
         <form onSubmit={handleSubmit}>
             <div className="form-group first">
-                <span>Email</span>
+                <span className="fs-6">Email</span>
                 <input
                     type="email"
                     className="form-control"
@@ -179,7 +185,7 @@ function LoginForm() {
                 />
             </div>
             <div className="form-group last mb-4">
-                <span>Mật khẩu</span>
+                <span className="fs-6">Mật khẩu</span>
                 <input
                     type="password"
                     className="form-control"
@@ -189,9 +195,9 @@ function LoginForm() {
                     required
                 />
             </div>
-            <div class="d-flex mb-5 align-items-center">
-                <span class="ml-auto">
-                    <a href="/forgot-password" class="forgot-pass">
+            <div className="d-flex mb-5 align-items-center">
+                <span className="ml-auto">
+                    <a href="/forgot-password" className="forgot-pass fs-5">
                         Quên mật khẩu
                     </a>
                 </span>
@@ -199,7 +205,7 @@ function LoginForm() {
             <input
                 type="submit"
                 value="Đăng nhập"
-                className="btn text-white btn-block btn-primary"
+                className="btn text-white btn-block btn-primary fs-5"
             />
         </form>
     );

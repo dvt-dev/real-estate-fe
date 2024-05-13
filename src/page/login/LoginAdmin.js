@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import './Login.css';
-import { ACCESS_TOKEN, FACEBOOK_AUTH_URL, GOOGLE_AUTH_URL } from "../../constants/Connect";
-import { Link, Navigate, useNavigate, useLocation } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import "../../assets/css/Form.css";
+import { ACCESS_TOKEN } from "../../constants/Connect";
+import { Link, Navigate, useNavigate, useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useEffect } from "react";
 import { login } from "../../services/fetch/ApiUtils";
 import { useState } from "react";
@@ -17,23 +17,26 @@ function LoginAdmin(props) {
         if (location.state && location.state.error) {
             setTimeout(() => {
                 toast.error(location.state.error, {
-                    timeout: 5000
+                    timeout: 5000,
                 });
                 history.replace({
                     pathname: location.pathname,
-                    state: {}
+                    state: {},
                 });
             }, 100);
         }
     }, [location.state, location.pathname, history]);
 
-    console.log("AUTH", props.authenticated, props)
+    console.log("AUTH", props.authenticated, props);
     if (props.authenticated && props.role === "ROLE_ADMIN") {
-        return <Navigate
-            to={{
-                pathname: "/admin",
-                state: { from: location }
-            }} />;
+        return (
+            <Navigate
+                to={{
+                    pathname: "/admin",
+                    state: { from: location },
+                }}
+            />
+        );
     }
 
     return (
@@ -42,63 +45,80 @@ function LoginAdmin(props) {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-6 order-md-2">
-                            <img src="../../assets/img/undraw_file_sync_ot38.svg" alt="Image" className="img-fluid" />
+                            <img
+                                src="../../assets/img/undraw_file_sync_ot38.svg"
+                                alt="login-img"
+                                className="img-fluid"
+                            />
                         </div>
                         <div className="col-md-6 contents">
                             <div className="row justify-content-center">
                                 <div className="col-md-8">
                                     <div className="mb-4">
-                                        <h3>Đăng nhập <a href="/" style={{ textDecoration: 'none' }}>Estate<span className="color-b">Agency</span></a></h3>
+                                        <h1>
+                                            Đăng nhập{" "}
+                                            <a
+                                                href="/"
+                                                style={{
+                                                    textDecoration: "none",
+                                                }}
+                                            >
+                                                Estate
+                                                <span className="color-b">
+                                                    Agency
+                                                </span>{" "}
+                                                Admin
+                                            </a>
+                                        </h1>
                                     </div>
                                     <LoginForm />
                                 </div>
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>
         </>
-    )
+    );
 }
-
-
-
 
 function LoginForm() {
     const history = useNavigate();
     const [formState, setFormState] = useState({
-        email: '',
-        password: ''
+        email: "",
+        password: "",
     });
 
-    const handleInputChange = event => {
+    const handleInputChange = (event) => {
         const target = event.target;
         const inputName = target.name;
         const inputValue = target.value;
 
-        setFormState(prevState => ({
+        setFormState((prevState) => ({
             ...prevState,
-            [inputName]: inputValue
+            [inputName]: inputValue,
         }));
     };
 
-    const handleSubmit = event => {
+    const handleSubmit = (event) => {
         event.preventDefault();
 
         const loginRequest = { ...formState };
 
         login(loginRequest)
-            .then(response => {
+            .then((response) => {
                 localStorage.setItem(ACCESS_TOKEN, response.accessToken);
                 toast.success("Bạn đã đăng nhập thành công!!");
                 history("/admin");
                 setTimeout(() => {
                     window.location.reload();
                 }, 2000);
-            }).catch(error => {
-                toast.error((error && error.message) || 'Oops! Có điều gì đó xảy ra. Vui lòng thử lại!');
+            })
+            .catch((error) => {
+                toast.error(
+                    (error && error.message) ||
+                        "Oops! Có điều gì đó xảy ra. Vui lòng thử lại!"
+                );
             });
     };
 
@@ -106,17 +126,33 @@ function LoginForm() {
         <form onSubmit={handleSubmit}>
             <div className="form-group first">
                 <span>Email</span>
-                <input type="email" className="form-control" name="email" value={formState.email} onChange={handleInputChange} required />
-
+                <input
+                    type="email"
+                    className="form-control"
+                    name="email"
+                    value={formState.email}
+                    onChange={handleInputChange}
+                    required
+                />
             </div>
             <div className="form-group last mb-4">
                 <span>Mật khẩu</span>
-                <input type="password" className="form-control" name="password" value={formState.password} onChange={handleInputChange} required />
-
+                <input
+                    type="password"
+                    className="form-control"
+                    name="password"
+                    value={formState.password}
+                    onChange={handleInputChange}
+                    required
+                />
             </div>
-            <input type="submit" value="Đăng nhập" className="btn text-white btn-block btn-primary" />
+            <input
+                type="submit"
+                value="Đăng nhập"
+                className="btn text-white btn-block btn-primary fs-5"
+            />
         </form>
-    )
+    );
 }
 
 export default LoginAdmin;

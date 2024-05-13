@@ -1,5 +1,5 @@
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif !important;
   background-color: #f8fafb; }
 
 p {
@@ -8,7 +8,7 @@ p {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: "Roboto", sans-serif; }
+  font-family: "Plus Jakarta Sans", sans-serif !important; }
 
 a {
   -webkit-transition: .3s all ease;
@@ -89,6 +89,13 @@ h2 {
   top: 2px;
   font-size: 14px; }
 
+
+.social-login {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
 .social-login a {
   text-decoration: none;
   position: relative;
@@ -109,17 +116,25 @@ h2 {
   .social-login a:hover {
     color: #fff; }
   .social-login a.facebook {
-    background: #3b5998; }
+    background: #3b5998; 
+  }
     .social-login a.facebook:hover {
-      background: #344e86; }
+      background: #344e86; 
+    }
   .social-login a.twitter {
-    background: #1da1f2; }
+    background: #1da1f2; 
+  }
     .social-login a.twitter:hover {
-      background: #0d95e8; }
+      background: #0d95e8; 
+    }
   .social-login a.google {
-    background: #ea4335; }
+    background: #fff; 
+    border-radius: 50%;
+    border: 1px solid #ddd;
+  }
     .social-login a.google:hover {
-      background: #e82e1e; }
+      background: #e82e1e; 
+    }
 
 .control {
   display: block;
