@@ -49,7 +49,7 @@ function Login(props) {
             <div className="content">
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-6 order-md-2">
+                        <div className="col-md-6 order-md-2 d-flex">
                             <img
                                 src="../../assets/img/undraw_file_sync_ot38.svg"
                                 alt="login-img"

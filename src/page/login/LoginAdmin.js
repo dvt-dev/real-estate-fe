@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import "../../assets/css/Form.css";
 import { ACCESS_TOKEN } from "../../constants/Connect";
-import { Link, Navigate, useNavigate, useLocation } from "react-router-dom";
+import { Navigate, useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
 import { login } from "../../services/fetch/ApiUtils";

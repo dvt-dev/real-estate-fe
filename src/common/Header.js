@@ -134,7 +134,10 @@ class Header extends Component {
                                                     this.props.currentUser.name
                                                 }
                                                 className="img-fluid rounded-circle border border-dark border-3"
-                                                style={{ width: "50px" }}
+                                                style={{
+                                                    width: "60px",
+                                                    height: "60px",
+                                                }}
                                             />
                                         ) : (
                                             <div
@@ -159,9 +162,9 @@ class Header extends Component {
                                     </div>
                                     <div className="flex-grow-1 ms-3">
                                         <div className="d-flex flex-row align-items-center mb-2">
-                                            <p className="mb-0 me-2">
+                                            <h4 className="mb-0 me-2">
                                                 {this.props.currentUser.name}
-                                            </p>
+                                            </h4>
                                             <ul
                                                 className="mb-0 list-unstyled d-flex flex-row"
                                                 style={{ color: "#1B7B2C" }}

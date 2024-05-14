@@ -78,10 +78,10 @@ function SignupRentaler(props) {
 
     return (
         <>
-            <div className="content">
+            <div className="content" style={{ padding: "3rem 0" }}>
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-6 order-md-2">
+                        <div className="col-md-6 order-md-2 d-flex">
                             <img
                                 src="../../assets/img/undraw_file_sync_ot38.svg"
                                 alt="signUp-img"
@@ -92,7 +92,7 @@ function SignupRentaler(props) {
                             <div className="row justify-content-center">
                                 <div className="col-md-8">
                                     <div className="mb-4">
-                                        <h3>
+                                        <h2>
                                             Đăng kí{" "}
                                             <a
                                                 href="/"
@@ -105,8 +105,8 @@ function SignupRentaler(props) {
                                                     Agency
                                                 </span>
                                             </a>
-                                        </h3>
-                                        <p className="mb-4">
+                                        </h2>
+                                        <p className="mb-4 fs-6">
                                             Nếu bạn có tài khoản.{" "}
                                             <a href="/login-rentaler">
                                                 Đăng nhập
