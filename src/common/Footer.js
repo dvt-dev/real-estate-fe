@@ -1,4 +1,6 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Footer extends Component {
     render() {
@@ -11,28 +13,29 @@ class Footer extends Component {
                                 <div className="widget-a">
                                     <div className="w-header-a">
                                         <h3 className="w-title-a text-brand">
-                                            PhongTroSinhVien
+                                            PhongTro
+                                            <span className="color-b">360</span>
                                         </h3>
                                     </div>
                                     <div className="w-body-a">
                                         <p className="w-text-a color-text-a">
                                             Giá cả phải chăng, phòng trọ chất
-                                            lượng cao!!!
+                                            lượng cao!
                                         </p>
                                     </div>
                                     <div className="w-footer-a">
                                         <ul className="list-unstyled">
                                             <li className="color-a">
                                                 <span className="color-text-a">
-                                                    Email .
+                                                    Email:
                                                 </span>{" "}
-                                                contact@example.com
+                                                phongtro360@gmail.com
                                             </li>
                                             <li className="color-a">
                                                 <span className="color-text-a">
-                                                    Số điện thoại .
+                                                    Số điện thoại:
                                                 </span>{" "}
-                                                +54 356 945234
+                                                +84 366 868 668
                                             </li>
                                         </ul>
                                     </div>
@@ -42,36 +45,29 @@ class Footer extends Component {
                                 <div className="widget-a">
                                     <div className="w-header-a">
                                         <h3 className="w-title-a text-brand">
-                                            Về công ty
+                                            Công ty
                                         </h3>
                                     </div>
                                     <div className="w-body-a">
                                         <div className="w-body-a">
                                             <ul className="list-unstyled">
                                                 <li className="item-list-a">
-                                                    <i className="bi bi-chevron-right"></i>{" "}
-                                                    <a href="#">Site Map</a>
+                                                    <a href="#">Về chúng tôi</a>
                                                 </li>
                                                 <li className="item-list-a">
-                                                    <i className="bi bi-chevron-right"></i>{" "}
-                                                    <a href="#">Legal</a>
+                                                    <a href="#">Tuyển dụng</a>
                                                 </li>
                                                 <li className="item-list-a">
-                                                    <i className="bi bi-chevron-right"></i>{" "}
-                                                    <a href="#">Agent Admin</a>
+                                                    <a href="#">Đội Ngũ</a>
                                                 </li>
                                                 <li className="item-list-a">
-                                                    <i className="bi bi-chevron-right"></i>{" "}
-                                                    <a href="#">Careers</a>
-                                                </li>
-                                                <li className="item-list-a">
-                                                    <i className="bi bi-chevron-right"></i>{" "}
-                                                    <a href="#">Affiliate</a>
-                                                </li>
-                                                <li className="item-list-a">
-                                                    <i className="bi bi-chevron-right"></i>{" "}
                                                     <a href="#">
-                                                        Privacy Policy
+                                                        Chính sách bảo mật
+                                                    </a>
+                                                </li>
+                                                <li className="item-list-a">
+                                                    <a href="#">
+                                                        Điều khoản sử dụng
                                                     </a>
                                                 </li>
                                             </ul>
@@ -83,34 +79,30 @@ class Footer extends Component {
                                 <div className="widget-a">
                                     <div className="w-header-a">
                                         <h3 className="w-title-a text-brand">
-                                            International sites
+                                            Hỗ trợ khách hàng
                                         </h3>
                                     </div>
                                     <div className="w-body-a">
                                         <ul className="list-unstyled">
                                             <li className="item-list-a">
-                                                <i className="bi bi-chevron-right"></i>{" "}
-                                                <a href="#">Venezuela</a>
+                                                <a href="#">
+                                                    Câu hỏi thường gặp
+                                                </a>
                                             </li>
                                             <li className="item-list-a">
-                                                <i className="bi bi-chevron-right"></i>{" "}
-                                                <a href="#">China</a>
+                                                <a href="#">
+                                                    HƯớng dẫn đăng tin
+                                                </a>
                                             </li>
                                             <li className="item-list-a">
-                                                <i className="bi bi-chevron-right"></i>{" "}
-                                                <a href="#">Hong Kong</a>
+                                                <a href="#">
+                                                    Quy định đăng tin
+                                                </a>
                                             </li>
                                             <li className="item-list-a">
-                                                <i className="bi bi-chevron-right"></i>{" "}
-                                                <a href="#">Argentina</a>
-                                            </li>
-                                            <li className="item-list-a">
-                                                <i className="bi bi-chevron-right"></i>{" "}
-                                                <a href="#">Singapore</a>
-                                            </li>
-                                            <li className="item-list-a">
-                                                <i className="bi bi-chevron-right"></i>{" "}
-                                                <a href="#">Philippines</a>
+                                                <a href="#">
+                                                    Giải quyết khiếu nại
+                                                </a>
                                             </li>
                                         </ul>
                                     </div>
@@ -126,19 +118,20 @@ class Footer extends Component {
                                 <nav className="nav-footer">
                                     <ul className="list-inline">
                                         <li className="list-inline-item">
-                                            <a href="#">Home</a>
+                                            <Link to="/">Trang chủ</Link>
                                         </li>
                                         <li className="list-inline-item">
-                                            <a href="#">About</a>
+                                            <Link to="/rental-home">
+                                                Nhà cho thuê
+                                            </Link>
                                         </li>
                                         <li className="list-inline-item">
-                                            <a href="#">Property</a>
+                                            <Link to="/contact">Liên hệ</Link>
                                         </li>
                                         <li className="list-inline-item">
-                                            <a href="#">Blog</a>
-                                        </li>
-                                        <li className="list-inline-item">
-                                            <a href="#">Contact</a>
+                                            <Link to="/angent-gird">
+                                                Người cho thuê
+                                            </Link>
                                         </li>
                                     </ul>
                                 </nav>
@@ -180,7 +173,7 @@ class Footer extends Component {
                                 </div>
                                 <div className="copyright-footer">
                                     <p className="copyright color-text-a">
-                                        &copy; Copyright
+                                        &copy; 2024 Copyright
                                         <span className="color-a">
                                             EstateAgency
                                         </span>{" "}
@@ -188,10 +181,7 @@ class Footer extends Component {
                                     </p>
                                 </div>
                                 <div className="credits">
-                                    Designed by{" "}
-                                    <a href="https://bootstrapmade.com/">
-                                        BootstrapMade
-                                    </a>
+                                    Designed by _dtuan.174 CNTT3 K61
                                 </div>
                             </div>
                         </div>
