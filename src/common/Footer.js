@@ -45,7 +45,7 @@ class Footer extends Component {
                                 <div className="widget-a">
                                     <div className="w-header-a">
                                         <h3 className="w-title-a text-brand">
-                                            Công ty
+                                            Về công ty
                                         </h3>
                                     </div>
                                     <div className="w-body-a">
