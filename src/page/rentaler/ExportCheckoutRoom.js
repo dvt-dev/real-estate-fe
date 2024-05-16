@@ -1,80 +1,86 @@
-import { Navigate, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
-import Nav from './Nav';
-import SidebarNav from './SidebarNav';
-import { checkoutRoom, getContract, getRequestById } from '../../services/fetch/ApiUtils';
-import * as XLSX from 'xlsx';
-
+import { Navigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import Nav from "./Nav";
+import SidebarNav from "./SidebarNav";
+import {
+    checkoutRoom,
+    getContract,
+    getRequestById,
+} from "../../services/fetch/ApiUtils";
+import * as XLSX from "xlsx";
 
 function ExportCheckoutRoom(props) {
     const { authenticated, role, currentUser, location, onLogout } = props;
     const { id } = useParams();
 
     const [contractData, setContractData] = useState({
-        nameBill: '',
-        createdAt: '',
+        nameBill: "",
+        createdAt: "",
         price: 0,
-        nameOfRent: '',
-        nameRoom: '',
-        room: '',
-        priceRequest: '',
-        deadlineContract: '',
+        nameOfRent: "",
+        nameRoom: "",
+        room: "",
+        priceRequest: "",
+        deadlineContract: "",
     });
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        setContractData(prevState => ({
+        setContractData((prevState) => ({
             ...prevState,
-            [name]: value
+            [name]: value,
         }));
     };
 
-
-
     const handleSubmit = (event) => {
         event.preventDefault();
-    
     };
 
     useEffect(() => {
         getContract(id)
-            .then(response => {
+            .then((response) => {
                 const contract = response;
-                setContractData(prevState => ({
+                setContractData((prevState) => ({
                     ...prevState,
-                    ...contract
+                    ...contract,
                 }));
-
             })
-            .catch(error => {
-                toast.error((error && error.message) || 'Oops! Có điều gì đó xảy ra. Vui lòng thử lại!');
+            .catch((error) => {
+                toast.error(
+                    (error && error.message) ||
+                        "Oops! Có điều gì đó xảy ra. Vui lòng thử lại!"
+                );
             });
     }, [id]);
 
     const handleExport = (id) => {
         checkoutRoom(id)
-        .then(response => {
-            toast.success(response.message)
-            exportToExcel(contractData);
-        })
-        .catch(error => {
-            toast.error((error && error.message) || 'Oops! Có điều gì đó xảy ra. Vui lòng thử lại!');
-        });
+            .then((response) => {
+                toast.success(response.message);
+                exportToExcel(contractData);
+            })
+            .catch((error) => {
+                toast.error(
+                    (error && error.message) ||
+                        "Oops! Có điều gì đó xảy ra. Vui lòng thử lại!"
+                );
+            });
         setContractData({
             nameBill: "",
             priceRequest: "",
-
         });
     };
 
-
     if (!authenticated) {
-        return <Navigate
-            to={{
-                pathname: "/login-rentaler",
-                state: { from: location }
-            }} />;
+        return (
+            <Navigate
+                to={{
+                    pathname: "/login-rentaler",
+                    state: { from: location },
+                }}
+            />
+        );
     }
     return (
         <>
@@ -95,108 +101,225 @@ function ExportCheckoutRoom(props) {
                     <div className="container-fluid p-0">
                         <div className="card">
                             <div className="card-header">
-                                <h5 className="card-title">Xuất hóa đơn trả phòng</h5>
+                                <h5 className="card-title">
+                                    Xuất hóa đơn trả phòng
+                                </h5>
                             </div>
                             <div className="card-body">
                                 <form onSubmit={handleSubmit}>
-
                                     <div className="mb-3">
-                                        <label className="form-label" htmlFor="price">Tên Hóa Đơn</label>
-                                        <input type="text" className="form-control" id="price" name="nameBill" value={contractData.nameBill}
+                                        <label
+                                            className="form-label"
+                                            htmlFor="price"
+                                        >
+                                            Tên Hóa Đơn
+                                        </label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            id="price"
+                                            name="nameBill"
+                                            value={contractData.nameBill}
                                             onChange={handleInputChange}
                                         />
                                     </div>
                                     <div className="mb-3">
-                                        <label className="form-label" htmlFor="price">Tên Phòng</label>
-                                        <input type="text" className="form-control" id="price" name="nameRoom" value={contractData.room && contractData.room.title}
-                                            onChange={handleInputChange} disabled
+                                        <label
+                                            className="form-label"
+                                            htmlFor="price"
+                                        >
+                                            Tên Phòng
+                                        </label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            id="price"
+                                            name="nameRoom"
+                                            value={
+                                                contractData.room &&
+                                                contractData.room.title
+                                            }
+                                            onChange={handleInputChange}
+                                            disabled
                                         />
                                     </div>
                                     <div className="mb-3">
-                                        <label className="form-label" htmlFor="price">Giá Phòng</label>
-                                        <input type="number" className="form-control" id="price" name="price" value={contractData.room && contractData.room.price}
+                                        <label
+                                            className="form-label"
+                                            htmlFor="price"
+                                        >
+                                            Giá Phòng
+                                        </label>
+                                        <input
+                                            type="number"
+                                            className="form-control"
+                                            id="price"
+                                            name="price"
+                                            value={
+                                                contractData.room &&
+                                                contractData.room.price
+                                            }
                                             onChange={handleInputChange}
                                         />
                                     </div>
                                     <div className="mb-3">
-                                        <label className="form-label" htmlFor="price">Thời Gian Điểm Bắt Đầu Thuê</label>
-                                        <input type="datetime-local" className="form-control" id="price" name="createAt" value={contractData.createdAt}
+                                        <label
+                                            className="form-label"
+                                            htmlFor="price"
+                                        >
+                                            Thời Gian Điểm Bắt Đầu Thuê
+                                        </label>
+                                        <input
+                                            type="datetime-local"
+                                            className="form-control"
+                                            id="price"
+                                            name="createAt"
+                                            value={contractData.createdAt}
                                             onChange={handleInputChange}
                                         />
                                     </div>
                                     <div className="mb-3">
-                                        <label className="form-label" htmlFor="price">Thời Hạn</label>
-                                        <input type="datetime-local" className="form-control" id="price" name="deadlineContract" value={contractData.deadlineContract}
+                                        <label
+                                            className="form-label"
+                                            htmlFor="price"
+                                        >
+                                            Thời Hạn
+                                        </label>
+                                        <input
+                                            type="datetime-local"
+                                            className="form-control"
+                                            id="price"
+                                            name="deadlineContract"
+                                            value={
+                                                contractData.deadlineContract
+                                            }
                                             onChange={handleInputChange}
                                         />
                                     </div>
                                     <div className="mb-3">
-                                        <label className="form-label" htmlFor="price">Chi phí lặp đặt (Theo yêu cầu) </label>
-                                        <input type="number" className="form-control" id="price" name="priceRequest" value={contractData.priceRequest}
+                                        <label
+                                            className="form-label"
+                                            htmlFor="price"
+                                        >
+                                            Chi phí lặp đặt (Theo yêu cầu){" "}
+                                        </label>
+                                        <input
+                                            type="number"
+                                            className="form-control"
+                                            id="price"
+                                            name="priceRequest"
+                                            value={contractData.priceRequest}
                                             onChange={handleInputChange}
                                         />
                                     </div>
                                     <div className="mb-3">
-                                        <label className="form-label" htmlFor="price">Người thuê</label>
-                                        <input type="text" className="form-control" id="price" name="nameOfRent" value={contractData.nameOfRent}
+                                        <label
+                                            className="form-label"
+                                            htmlFor="price"
+                                        >
+                                            Người thuê
+                                        </label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            id="price"
+                                            name="nameOfRent"
+                                            value={contractData.nameOfRent}
                                             onChange={handleInputChange}
                                         />
                                     </div>
-                                    <button type="submit" onClick={() => handleExport(contractData.room.id)} className="btn btn-primary">Xuất hóa đơn</button>
+                                    <button
+                                        type="submit"
+                                        onClick={() =>
+                                            handleExport(contractData.room?.id)
+                                        }
+                                        className="btn btn-primary"
+                                    >
+                                        Xuất hóa đơn
+                                    </button>
                                 </form>
                             </div>
                         </div>
                     </div>
-                </div >
-            </div >
-
+                </div>
+            </div>
         </>
-    )
+    );
 }
-
-
 
 function exportToExcel(contractData) {
     // Create an empty workbook
     const workbook = XLSX.utils.book_new();
 
-    const formattedPrice = contractData.priceRequest ? formatCurrency(contractData.priceRequest) : '';
+    const formattedPrice = contractData.priceRequest
+        ? formatCurrency(contractData.priceRequest)
+        : "";
 
-    const deadlineYear = parseInt(new Date(contractData.deadlineContract).getFullYear());
+    const deadlineYear = parseInt(
+        new Date(contractData.deadlineContract).getFullYear()
+    );
     const currentYear = parseInt(new Date().getFullYear());
 
-    const deadlineMonth = parseInt(new Date(contractData.deadlineContract).getMonth());
+    const deadlineMonth = parseInt(
+        new Date(contractData.deadlineContract).getMonth()
+    );
     const currentMonth = parseInt(new Date().getMonth());
 
     const pricePerMonth = parseFloat(contractData.room.price);
     const priceRequest = parseFloat(contractData.priceRequest);
 
-    const result = ((deadlineYear - currentYear) * 12 + (deadlineMonth - currentMonth)) * pricePerMonth + priceRequest;
+    const result =
+        ((deadlineYear - currentYear) * 12 + (deadlineMonth - currentMonth)) *
+            pricePerMonth +
+        priceRequest;
     // Add a worksheet to the workbook
     const worksheet = XLSX.utils.aoa_to_sheet([
-        ['Tên Hóa Đơn', 'Thời Gian Điểm Bắt Đầu Thuê', 'Chi phí lặp đặt (Theo yêu cầu)', 'Giá Phòng', 'Tên Phòng', 'Thời Hạn', 'Người thuê', 'Tổng Tiền'],
-        [contractData.nameBill, contractData.createdAt, formattedPrice, contractData.room.price, contractData.room.title, contractData.deadlineContract, contractData.nameOfRent, result],
+        [
+            "Tên Hóa Đơn",
+            "Thời Gian Điểm Bắt Đầu Thuê",
+            "Chi phí lặp đặt (Theo yêu cầu)",
+            "Giá Phòng",
+            "Tên Phòng",
+            "Thời Hạn",
+            "Người thuê",
+            "Tổng Tiền",
+        ],
+        [
+            contractData.nameBill,
+            contractData.createdAt,
+            formattedPrice,
+            contractData.room.price,
+            contractData.room.title,
+            contractData.deadlineContract,
+            contractData.nameOfRent,
+            result,
+        ],
     ]);
-    XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
 
     function formatCurrency(value) {
-        return value.toLocaleString('vi-VN', {
-            style: 'currency',
-            currency: 'VND',
+        return value.toLocaleString("vi-VN", {
+            style: "currency",
+            currency: "VND",
         });
     }
 
     // Generate the Excel file data
-    const excelBuffer = XLSX.write(workbook, { type: 'array', bookType: 'xlsx' });
+    const excelBuffer = XLSX.write(workbook, {
+        type: "array",
+        bookType: "xlsx",
+    });
 
     // Create a Blob from the Excel file data
-    const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    const blob = new Blob([excelBuffer], {
+        type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    });
 
     // Create a download link and trigger the download
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
+    const a = document.createElement("a");
     a.href = url;
-    a.download = 'hoa_don.xlsx';
+    a.download = "hoa_don.xlsx";
     a.click();
 
     // Cleanup

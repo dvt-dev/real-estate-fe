@@ -614,8 +614,8 @@ a:hover {
 .navbar-default {
   transition: all 0.5s ease-in-out;
   background-color: #ffffff;
-  padding-top: 28px;
-  padding-bottom: 28px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   box-shadow: 1px 2px 15px rgba(100, 100, 100, 0.3);
@@ -982,6 +982,7 @@ a:hover {
   border-radius: 0;
   opacity: 1;
   transition: 0.3s;
+  border-radius: 5px;
 }
 
 .intro .swiper-pagination .swiper-pagination-bullet-active {
@@ -1033,6 +1034,7 @@ a:hover {
 .intro .intro-title-top {
   margin-bottom: 1rem;
   font-size: 0.9rem;
+  font-weight: 500;
   color: #ffffff;
   letter-spacing: 0.05em;
 }
@@ -1046,7 +1048,7 @@ a:hover {
 
 @media (min-width: 992px) {
   .intro .intro-title-top {
-    font-size: 1rem;
+    font-size: 2rem;
     margin-bottom: 2rem;
   }
 }
@@ -1090,6 +1092,11 @@ a:hover {
 .intro .intro-subtitle.intro-price {
   padding-top: 1rem;
   font-size: 1.2rem;
+}
+
+.intro .intro-subtitle.intro-price span:hover {
+  background-color: #2eca6a;
+  transition: all .3s ease;
 }
 
 @media (min-width: 576px) {

@@ -4,7 +4,7 @@ import "./Profile.css";
 
 class Header extends Component {
     render() {
-        console.log("logout", this.props.onLogout);
+        // console.log("logout", this.props.onLogout);
         return (
             <>
                 <nav className="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
@@ -23,7 +23,7 @@ class Header extends Component {
                             <span></span>
                         </button>
                         <a className="navbar-brand text-brand" href="/">
-                            PhongTro<span className="color-b">SinhVien</span>
+                            PhongTro<span className="color-b">360</span>
                         </a>
 
                         <div
