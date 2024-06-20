@@ -280,7 +280,7 @@ a:hover {
 
 /*------/ Space Padding /------*/
 .section-t8 {
-  padding-top: 8rem;
+  padding-top: 4rem;
 }
 
 @media (max-width: 767px) {
@@ -325,7 +325,7 @@ a:hover {
 
 /*------/ Title /------*/
 .title-wrap {
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
 }
 
 .title-a {
@@ -1120,12 +1120,12 @@ a:hover {
 
 /*------/ Intro Single /------*/
 .intro-single {
-  padding: 12rem 0 3rem;
+  padding: 8rem 0 3rem;
 }
 
 @media (max-width: 767px) {
   .intro-single {
-    padding-top: 9rem;
+    padding-top: 6rem;
   }
 }
 
@@ -1266,24 +1266,28 @@ a:hover {
 @media (min-width: 768px) {
   .card-box-a:hover .card-overlay-a-content {
     bottom: 60px;
+    cursor: pointer;
   }
 }
 
 @media (min-width: 768px) and (min-width: 768px) {
   .card-box-a:hover .card-overlay-a-content {
     bottom: 60px;
+    cursor: pointer;
   }
 }
 
 @media (min-width: 768px) and (min-width: 992px) {
   .card-box-a:hover .card-overlay-a-content {
     bottom: 64px;
+    cursor: pointer;
   }
 }
 
 @media (min-width: 768px) {
   .card-box-a:hover .card-body-a {
     padding-bottom: 1rem;
+    cursor: pointer;
   }
 }
 
@@ -1294,6 +1298,7 @@ a:hover {
 
   .card-box-a .card-body-a {
     padding-bottom: 1rem;
+
   }
 }
 
@@ -1372,7 +1377,6 @@ a:hover {
 
 .card-info {
   list-style: none;
-  margin-bottom: 0;
   padding: 0.5rem 0;
 }
 
@@ -1668,10 +1672,15 @@ a:hover {
 
 .card-header-c {
   padding: 0 1rem 1rem 1rem;
+  gap: 12px;
 }
 
 .card-body-c {
   padding: 0.5rem 0.5rem 0 0.5rem;
+}
+
+.card-body-c .content-c {
+  font-size: 18px;;
 }
 
 @media (max-width: 767px) {
@@ -1685,7 +1694,7 @@ a:hover {
 }
 
 .card-box-ico {
-  padding: 1rem 3rem 1rem 2.5rem;
+  padding: 12px;
   border: 5px solid #2eca6a;
 }
 
@@ -1695,20 +1704,21 @@ a:hover {
 }
 
 .title-c {
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   font-weight: 600;
   margin-left: -40px;
+  text-align: center;
 }
 
 @media (min-width: 768px) {
   .title-c {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
   }
 }
 
 @media (min-width: 992px) {
   .title-c {
-    font-size: 2.5rem;
+    font-size: 2.4rem;
   }
 }
 
@@ -1957,7 +1967,8 @@ a:hover {
 }
 
 .testimonials-box .testimonial-avatar {
-  width: 80px !important;
+  width: 60px !important;
+  height: 60px !important;
   display: inline-flex !important;
   border-radius: 50%;
 }

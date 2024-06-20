@@ -106,7 +106,10 @@ class IntroCarosel extends Component {
                         </SwiperSlide>
                     </Swiper>
                 </div>
-                <div className="swiper-pagination"></div>
+                <div
+                    className="swiper-pagination"
+                    style={{ transition: "all .3s ease-in" }}
+                ></div>
             </>
         );
     }

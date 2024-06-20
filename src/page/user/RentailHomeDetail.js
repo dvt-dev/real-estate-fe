@@ -247,12 +247,15 @@ class RentailHomeDetail extends Component {
                                                             <SwiperSlide className="carousel-item-b swiper-slide">
                                                                 <img
                                                                     src={
+                                                                        "http://localhost:8080/image/" +
                                                                         media.files
                                                                     }
                                                                     alt=""
                                                                     style={{
                                                                         width: "100%",
                                                                         height: "100%",
+                                                                        objectFit:
+                                                                            "cover",
                                                                     }}
                                                                 />
                                                             </SwiperSlide>
@@ -275,7 +278,13 @@ class RentailHomeDetail extends Component {
                                                         <span className="bi bi-cash"></span>
                                                     </div>
                                                     <div className="card-title-c align-self-center">
-                                                        <h5 className="title-c">
+                                                        <h5
+                                                            className="title-c"
+                                                            style={{
+                                                                marginLeft:
+                                                                    "18px",
+                                                            }}
+                                                        >
                                                             {rooms
                                                                 ? rooms.price.toLocaleString(
                                                                       "vi-VN",
@@ -314,7 +323,7 @@ class RentailHomeDetail extends Component {
                                                         </li>
                                                         <li className="d-flex justify-content-between">
                                                             <strong>
-                                                                Loại phòng
+                                                                Loại phòng:
                                                             </strong>
                                                             <span>
                                                                 {rooms &&
@@ -391,7 +400,7 @@ class RentailHomeDetail extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-md-10 offset-md-1">
+                                {/* <div className="col-md-10 offset-md-1">
                                     <ul
                                         className="nav nav-pills-a nav-pills mb-3 section-t3"
                                         id="pills-tab"
@@ -481,7 +490,7 @@ class RentailHomeDetail extends Component {
                                             />
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="col-md-12">
                                     <div className="row section-t3">
                                         <div className="col-sm-12">

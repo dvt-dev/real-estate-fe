@@ -104,7 +104,10 @@ const ModalRoomDetails = ({ roomId }) => {
                                         return (
                                             <SwiperSlide classNameName="carousel-item-b swiper-slide">
                                                 <img
-                                                    src={item.files}
+                                                    src={
+                                                        "http://localhost:8080/image/" +
+                                                        item.files
+                                                    }
                                                     alt=""
                                                     style={{ width: "100%" }}
                                                 />
@@ -127,7 +130,12 @@ const ModalRoomDetails = ({ roomId }) => {
                                                 <span className="bi bi-cash"></span>
                                             </div>
                                             <div className="card-title-c align-self-center">
-                                                <h5 className="title-c">
+                                                <h5
+                                                    className="title-c"
+                                                    style={{
+                                                        paddingLeft: "30px",
+                                                    }}
+                                                >
                                                     {roomData?.price.toLocaleString(
                                                         "vi-VN",
                                                         {
@@ -204,7 +212,7 @@ const ModalRoomDetails = ({ roomId }) => {
                                             {roomData.description}
                                         </p>
                                     </div>
-                                    <div className="row section-t3">
+                                    {/* <div className="row section-t3">
                                         <div className="col-sm-12">
                                             <div className="title-box-d">
                                                 <h3 className="title-d">
@@ -222,11 +230,11 @@ const ModalRoomDetails = ({ roomId }) => {
                                             <li>Phòng tenis</li>
                                             <li>Khu vệ sinh</li>
                                         </ul>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-10 offset-md-1">
+                        {/* <div className="col-md-10 offset-md-1">
                             <ul
                                 className="nav nav-pills-a nav-pills mb-3 section-t3"
                                 id="pills-tab"
@@ -313,7 +321,7 @@ const ModalRoomDetails = ({ roomId }) => {
                                     />
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                         <div className="col-md-12">
                             <div className="row section-t3">
                                 <div className="col-sm-12">

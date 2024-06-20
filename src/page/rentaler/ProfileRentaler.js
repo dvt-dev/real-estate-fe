@@ -21,8 +21,6 @@ const ProfileRentaler = (props) => {
         setFacebook(event.target.value);
     };
 
-
-
     const onFileChange = (event) => {
         const file = event.target.files[0];
         if (file) {
@@ -46,39 +44,40 @@ const ProfileRentaler = (props) => {
         }
     };
 
-
-
     const handleSubmit = (event) => {
-
         // Prepare data for updating the user profile
         const formData = new FormData();
-        formData.append('file', imageFile);
-        formData.append('zalo', zalo);
-        formData.append('facebook', facebook)
+        formData.append("file", imageFile);
+        formData.append("zalo", zalo);
+        formData.append("facebook", facebook);
 
         event.preventDefault();
         // Handle form submission
 
-        AuthService.uploadProfile(formData).then(response => {
-            toast.success(response.message);
-            toast.success("Cập nhật thông tin cá nhân thành công.");
-            props.loadCurrentUser();
-        }).catch(error => {
-            toast.error((error && error.message) || 'Oops! Có điều gì đó xảy ra. Vui lòng thử lại!');
-        }
-        )
-
-
+        AuthService.uploadProfile(formData)
+            .then((response) => {
+                toast.success(response.message);
+                toast.success("Cập nhật thông tin cá nhân thành công.");
+                props.loadCurrentUser();
+            })
+            .catch((error) => {
+                toast.error(
+                    (error && error.message) ||
+                        "Oops! Có điều gì đó xảy ra. Vui lòng thử lại!"
+                );
+            });
     };
 
     if (!authenticated) {
-        return <Navigate
-            to={{
-                pathname: "/login-rentaler",
-                state: { from: location }
-            }} />;
+        return (
+            <Navigate
+                to={{
+                    pathname: "/login-rentaler",
+                    state: { from: location },
+                }}
+            />
+        );
     }
-
 
     return (
         <div className="wrapper">
@@ -95,21 +94,36 @@ const ProfileRentaler = (props) => {
                 <Nav onLogout={onLogout} currentUser={currentUser} />
 
                 <main style={{ margin: "20px 20px 20px 20px" }}>
-                    <div className="profile-info">
+                    <div
+                        className="profile-info"
+                        style={{ marginBottom: "20px" }}
+                    >
                         <div className="profile-avatar">
-                            {
-                                currentUser && currentUser.imageUrl ? (
-                                    <img src={currentUser.imageUrl} alt={currentUser.name} />
-                                ) : (
-                                    <div className="text-avatar">
-                                        <span>{currentUser && currentUser.name && currentUser.name[0]}</span>
-                                    </div>
-                                )
-                            }
+                            {currentUser && currentUser.imageUrl ? (
+                                <img
+                                    src={currentUser.imageUrl}
+                                    alt={currentUser.name}
+                                    style={{
+                                        width: "250px",
+                                        height: "250px",
+                                        objectFit: "cover",
+                                    }}
+                                />
+                            ) : (
+                                <div className="text-avatar">
+                                    <span>
+                                        {currentUser &&
+                                            currentUser.name &&
+                                            currentUser.name[0]}
+                                    </span>
+                                </div>
+                            )}
                         </div>
                         <div className="profile-name">
                             <h2>{currentUser && currentUser.name}</h2>
-                            <p className="profile-email">{currentUser && currentUser.email}</p>
+                            <p className="profile-email">
+                                {currentUser && currentUser.email}
+                            </p>
                         </div>
                     </div>
 
@@ -119,49 +133,126 @@ const ProfileRentaler = (props) => {
                                 <div class="row">
                                     <div class="mb-3 col-md-6">
                                         <label class="form-label">Email</label>
-                                        <input type="email" className="form-control" name='email' value={currentUser && currentUser.email} id="inputEmail4" placeholder="Email" disabled />
+                                        <input
+                                            type="email"
+                                            className="form-control"
+                                            name="email"
+                                            value={
+                                                currentUser && currentUser.email
+                                            }
+                                            id="inputEmail4"
+                                            placeholder="Email"
+                                            disabled
+                                        />
                                     </div>
                                     <div class="mb-3 col-md-6">
-                                        <label class="form-label" >Số điện thoại</label>
-                                        <input type="text" className="form-control" name='phone' value={currentUser && currentUser.phone} id="inputPassword4" placeholder="Số điện thoại" disabled />
+                                        <label class="form-label">
+                                            Số điện thoại
+                                        </label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            name="phone"
+                                            value={
+                                                currentUser && currentUser.phone
+                                            }
+                                            id="inputPassword4"
+                                            placeholder="Số điện thoại"
+                                            disabled
+                                        />
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label" for="inputAddress">Họ và Tên</label>
-                                    <input type="text" className="form-control" name='name' value={currentUser && currentUser.name} id="inputAddress" placeholder="Peter Parker" disabled />
+                                    <label
+                                        class="form-label"
+                                        for="inputAddress"
+                                    >
+                                        Họ và Tên
+                                    </label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        name="name"
+                                        value={currentUser && currentUser.name}
+                                        id="inputAddress"
+                                        placeholder="Peter Parker"
+                                        disabled
+                                    />
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label" for="inputAddress">Địa chỉ</label>
-                                    <input type="text" className="form-control" name='address' value={currentUser && currentUser.address} id="inputAddress" placeholder="Peter Parker" disabled />
+                                    <label
+                                        class="form-label"
+                                        for="inputAddress"
+                                    >
+                                        Địa chỉ
+                                    </label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        name="address"
+                                        value={
+                                            currentUser && currentUser.address
+                                        }
+                                        id="inputAddress"
+                                        placeholder="Địa chỉ"
+                                        disabled
+                                    />
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Tải Hình Ảnh</label>
-                                    <input class="form-control" accept=".png, .jpeg" type="file" onChange={onFileChange} />
+                                    <label class="form-label">
+                                        Tải Hình Ảnh
+                                    </label>
+                                    <input
+                                        class="form-control"
+                                        accept=".png, .jpeg"
+                                        type="file"
+                                        onChange={onFileChange}
+                                    />
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label" for="inputAddress">Liện hệ Zalo </label>
-                                    <input type="text" className="form-control" name='zalo'
+                                    <label
+                                        class="form-label"
+                                        for="inputAddress"
+                                    >
+                                        Liện hệ Zalo{" "}
+                                    </label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        name="zalo"
                                         value={zalo}
                                         onChange={handleZaloChange}
-                                        id="inputAddress" placeholder="https://zalo.me/(Số điện thoại)" />
+                                        id="inputAddress"
+                                        placeholder="https://zalo.me/(Số điện thoại)"
+                                    />
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label" for="inputAddress">Liên Hệ Facebook</label>
-                                    <input type="text" className="form-control" name='facebook'
+                                    <label
+                                        class="form-label"
+                                        for="inputAddress"
+                                    >
+                                        Liên Hệ Facebook
+                                    </label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        name="facebook"
                                         value={facebook}
                                         onChange={handleFacebookChange}
-                                        id="inputAddress" placeholder="https://www.facebook.com/(Domain trang cá nhân)" />
+                                        id="inputAddress"
+                                        placeholder="https://www.facebook.com/(Domain trang cá nhân)"
+                                    />
                                 </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">
+                                    Submit
+                                </button>
                             </form>
                         </div>
                     </div>
                 </main>
             </div>
         </div>
-    )
-}
-
-
+    );
+};
 
 export default ProfileRentaler;
